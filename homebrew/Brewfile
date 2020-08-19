@@ -1,0 +1,9 @@
+# This is a brew file
+# These formulae will be installed by brew you bootstrap
+
+# specify a directory to install macOS apps
+cask_args appdir: '/Applications'
+
+# Development
+cask "android-platform-tools"
+brew "fish"
