@@ -48,6 +48,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "com.google.android.studio",
                                             "^com.googlecode.iterm2",
                                             "com.apple.Terminal"
                                         ],
@@ -76,6 +77,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "com.google.android.studio",
                                             "^com.googlecode.iterm2",
                                             "com.apple.Terminal"
                                         ],
