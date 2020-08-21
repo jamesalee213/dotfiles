@@ -1,4 +1,4 @@
-homebrew/Brewfile.lock.json
+**/Brewfile.lock.json
 *.swp
 *.lock
 *.bundle
