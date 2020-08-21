@@ -7,7 +7,7 @@ class Homebrew
         @installer = HomebrewInstaller.new
     end
 
-    def run
+    def plug
         if @installer.should_install
             puts "Installing Homebrew"
             @installer.install
