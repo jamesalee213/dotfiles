@@ -1,4 +1,3 @@
-
 class Homebrew
 
     BREWFILE = "~/.dotfiles/homebrew/Brewfile".freeze
@@ -14,8 +13,6 @@ class Homebrew
         else
             puts "Homebrew is already installed"
         end
-
-        system("brew bundle --file=#{BREWFILE}")
     end
 end    
 
