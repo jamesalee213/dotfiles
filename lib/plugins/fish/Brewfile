@@ -1,0 +1,4 @@
+# This is a brew file for fish shell
+
+brew "fish"
+

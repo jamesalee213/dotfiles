@@ -6,4 +6,3 @@ cask_args appdir: '/Applications'
 
 # Development
 cask "android-platform-tools"
-brew "fish"
