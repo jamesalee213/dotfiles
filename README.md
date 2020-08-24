@@ -17,8 +17,4 @@ After that, you can run
 ```console
 bundle exec rspec
 ```
-or 
-```console
-bundle exec rspec --format documentation
-```
  
