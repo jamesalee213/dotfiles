@@ -15,9 +15,7 @@ class Fish
             brew_bundle(__dir__)
         end
         
-        if not is_fish_in_etc
-            save_fish_to_etc
-        end
+        # save fish to etc
 
 =begin
         if not is_fish_default_shell
