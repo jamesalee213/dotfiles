@@ -6,7 +6,7 @@ class ChangeShell
 
     DEFAULT_SHELL = "echo $SHELL"
     COMMAND = "chsh -s #{FISH_SHELL}"
-    UNDO_COMMAND = "test"
+    UNDO_COMMAND = "undo chsh command"
 
     def should_do
         `#{DEFAULT_SHELL}`.strip != FISH_SHELL
