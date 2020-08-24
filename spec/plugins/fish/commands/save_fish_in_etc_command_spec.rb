@@ -1,4 +1,4 @@
-require "plugins/fish/commands/save_fish_in_etc"
+require "plugins/fish/commands/save_fish_in_etc_command"
 require "plugins/plugin_command_spec"
 
 describe SaveFishInEtc do
