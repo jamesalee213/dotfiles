@@ -1,27 +1,33 @@
 module FishUtil
+
     ETC_SHELLS = "/etc/shells"
     FISH_SHELL = "/usr/local/bin/fish"
+
+    SHOW_ETC_SHELL = "cat #{ETC_SHELLS}"
+    SAVE_FISH_TO_ETC = "echo #{FISH_SHELL} >> #{ETC_SHELLS}"
+
+    CHANGE_SHELL = "chsh -s #{FISH_SHELL}"
 
     private 
 
     def is_fish_installed
-        return !`which fish`.to_s.empty?
+        `which fish`.strip == FISH_SHELL
+    end
+
+    def is_fish_in_etc
+        `#{SHOW_ETC_SHELL}`.include? FISH_SHELL
     end
 
     def save_fish_to_etc
-        fish_in_etc = `cat #{ETC_SHELLS}`.include? FISH_SHELL
+        system(SAVE_FISH_TO_ETC)
+    end
 
-        if not fish_in_etc
-            system("echo #{FISH_SHELL} >> #{ETC_SHELLS}")
-            puts "#{FISH_SHELL} is saved to #{ETC_SHELLS}"
-        end
+
+    def is_fish_default_shell
+        `echo $SHELL`.strip == FISH_SHELL
     end
 
     def change_shell
-        default_shell = `echo $SHELL`
-
-        if not default_shell.strip == FISH_SHELL
-            system("chsh -s #{FISH_SHELL}")
-        end
+        system(CHANGE_SHELL)
     end
 end

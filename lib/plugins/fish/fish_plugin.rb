@@ -1,24 +1,37 @@
-require_relative "../homebrew/brew_bundler"
 require_relative "fish_util"
+require_relative "../homebrew/brew_bundler"
 
 class Fish
 
-    include BrewBundler
     include FishUtil
+    include BrewBundler
+
+    def initialize
+        @commands = [SaveFishInEtc.new]
+    end
+
+    def plug2
+        @commands[0].do
+    end
 
     def plug
         if not is_fish_installed
-            puts "Installing fish..."
             brew_bundle(__dir__)
         end
+        
+        if not is_fish_in_etc
+            save_fish_to_etc
+        end
 
-        save_fish_to_etc
+=begin
+        if not is_fish_default_shell
+            #change_shell
+        end
+=end
 
-        change_shell
     end
 
-    def self.test(foobar)
-        0
+    def unplug
     end
 end
 
