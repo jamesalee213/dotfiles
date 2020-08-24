@@ -2,13 +2,15 @@ require_relative "fish_util"
 
 class SaveFishInEtc
 
+    include FishUtil
+
     ETC_SHELLS = "/etc/shells"
     ETC_SHELLS_CONTENT = "cat #{ETC_SHELLS}"
-    COMMAND = "echo #{FishUtil::FISH_SHELL} >> #{ETC_SHELLS}"
-    UNDO_COMMAND = "sed '/#{FishUtil::FISH_SHELL}/d' #{ETC_SHELLS}"
+    COMMAND = "echo #{FISH_SHELL} >> #{ETC_SHELLS}"
+    UNDO_COMMAND = "sed '/#{FISH_SHELL}/d' #{ETC_SHELLS}"
 
     def should_do
-        not `#{ETC_SHELLS_CONTENT}`.include? FishUtil::FISH_SHELL
+        not `#{ETC_SHELLS_CONTENT}`.include? FISH_SHELL
     end
 
     def do
@@ -16,7 +18,7 @@ class SaveFishInEtc
     end
 
     def can_undo
-        `#{ETC_SHELLS_CONTENT}`.include? FishUtil::FISH_SHELL
+        `#{ETC_SHELLS_CONTENT}`.include? FISH_SHELL
     end
 
     def undo

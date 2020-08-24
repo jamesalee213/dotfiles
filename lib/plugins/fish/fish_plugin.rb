@@ -7,7 +7,8 @@ class Fish
     include BrewBundler
 
     def initialize
-        @commands = [SaveFishInEtc.new]
+        @commands = [SaveFishInEtc.new,
+                     ChangeShell.new]
     end
 
     def plug
@@ -17,11 +18,7 @@ class Fish
         
         # save fish to etc
 
-=begin
-        if not is_fish_default_shell
-            #change_shell
-        end
-=end
+        # change shell
     end
 
     def unplug
