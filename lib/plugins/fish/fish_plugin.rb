@@ -1,4 +1,4 @@
-require_relative "fish_util"
+Dir["#{__dir__}/commands/*"].each {|file| require file }
 require_relative "../homebrew/brew_bundler"
 
 class Fish
@@ -8,10 +8,6 @@ class Fish
 
     def initialize
         @commands = [SaveFishInEtc.new]
-    end
-
-    def plug2
-        @commands[0].do
     end
 
     def plug
@@ -28,7 +24,6 @@ class Fish
             #change_shell
         end
 =end
-
     end
 
     def unplug
