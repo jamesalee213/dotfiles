@@ -13,7 +13,7 @@ describe ChangeShell do
 
         context "GIVEN fish is not default shell" do
             before do
-                allow(command).to receive(:`).with(ChangeShell::DEFAULT_SHELL).and_return("something")
+                allow(command).to receive(:`).with(ChangeShell::CURRENT_SHELL).and_return("something")
             end
 
             it "SHOULD return true" do
@@ -25,7 +25,7 @@ describe ChangeShell do
 
         context "GIVEN fish is default shell" do
             before do
-                allow(command).to receive(:`).with(ChangeShell::DEFAULT_SHELL).and_return("#{ChangeShell::FISH_SHELL}")
+                allow(command).to receive(:`).with(ChangeShell::CURRENT_SHELL).and_return("#{ChangeShell::FISH_SHELL}")
             end
 
             it "SHOULD return false" do
@@ -37,8 +37,19 @@ describe ChangeShell do
     end
 
     describe "#do" do
+
+        let(:current_shell) { "myshell" }
+
         before do
             allow(command).to receive(:system)
+            allow(command).to receive(:`).with(ChangeShell::CURRENT_SHELL).and_return(current_shell)
+            allow(File).to receive(:write)
+        end
+
+        it "SHOULD write current shell to file" do
+            command.do
+
+            expect(File).to have_received(:write).with(any_args, current_shell)
         end
 
         it "SHOULD call system to change shell" do
@@ -46,6 +57,7 @@ describe ChangeShell do
 
             expect(command).to have_received(:system).with(ChangeShell::COMMAND)
         end
+
     end
 
     describe "#can_undo" do
@@ -55,7 +67,7 @@ describe ChangeShell do
 
         context "GIVEN fish is not default shell" do
             before do
-                allow(command).to receive(:`).with(ChangeShell::DEFAULT_SHELL).and_return("something")
+                allow(command).to receive(:`).with(ChangeShell::CURRENT_SHELL).and_return("something")
             end
 
             it "SHOULD return false" do
@@ -67,7 +79,7 @@ describe ChangeShell do
 
         context "GIVEN fish is default shell" do
             before do
-                allow(command).to receive(:`).with(ChangeShell::DEFAULT_SHELL).and_return("#{ChangeShell::FISH_SHELL}")
+                allow(command).to receive(:`).with(ChangeShell::CURRENT_SHELL).and_return("#{ChangeShell::FISH_SHELL}")
             end
 
             it "SHOULD return true" do
@@ -79,14 +91,19 @@ describe ChangeShell do
     end
 
     describe "#undo" do
+
+        let(:default_shell) { "my_shell" }
+
         before do
             allow(command).to receive(:system)
+            #allow(command).to receive(:`).with(ChangeShell::CURRENT_SHELL).and_return(current_shell)
+            allow(File).to receive(:read).and_return(default_shell)
         end
 
         it "SHOULD call system to change shell" do
             command.undo
 
-            expect(command).to have_received(:system).with(ChangeShell::UNDO_COMMAND)
+            expect(command).to have_received(:system).with(ChangeShell::CHANGE_SHELL + default_shell)
         end
     end
 end
