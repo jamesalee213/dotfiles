@@ -6,8 +6,8 @@ class SaveFishInEtc
 
     ETC_SHELLS = "/etc/shells"
     ETC_SHELLS_CONTENT = "cat #{ETC_SHELLS}"
-    COMMAND = "echo #{FISH_SHELL} >> #{ETC_SHELLS}"
-    UNDO_COMMAND = "sed -i -e '/#{FISH_SHELL}/d' #{ETC_SHELLS}"
+    COMMAND = "sudo sed -i -e '$ a\\\n #{FISH_SHELL.gsub('/', '\/')}\n' #{ETC_SHELLS}"
+    UNDO_COMMAND = "sudo sed -i -e '/#{FISH_SHELL.gsub('/', '\/')}/d' #{ETC_SHELLS}"
 
     def should_do
         not `#{ETC_SHELLS_CONTENT}`.include? FISH_SHELL
