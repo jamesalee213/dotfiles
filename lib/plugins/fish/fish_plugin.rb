@@ -1,27 +1,27 @@
-Dir["#{__dir__}/commands/*"].each {|file| require file }
-require_relative "../homebrew/brew_bundler"
+Dir["#{__dir__}/commands/*.rb"].each {|file| require file }
 
 class Fish
 
-    include FishUtil
-    include BrewBundler
-
     def initialize
-        @commands = [SaveFishInEtc.new,
+        @commands = [InstallFish.new,
+                     SaveFishInEtc.new,
                      ChangeShell.new]
     end
 
     def plug
-        if not is_fish_installed
-            brew_bundle(__dir__)
-        end
-        
-        # save fish to etc
-
-        # change shell
+        @commands.each { |command|
+            if command.should_do
+                command.do
+            end
+        }
     end
 
     def unplug
+        @commands.reverse.each { |command|
+            if command.can_undo
+                command.undo
+            end
+        }
     end
 end
 

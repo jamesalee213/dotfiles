@@ -11,4 +11,5 @@ $plugins = [
 ]
 
 plugin = Fish.new
-plugin.plug
+#plugin.plug
+plugin.unplug

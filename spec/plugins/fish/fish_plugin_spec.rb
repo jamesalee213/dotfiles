@@ -28,7 +28,7 @@ describe Fish do
                 allow(plugin).to receive(:`).with("which fish").and_return(Fish::FISH_SHELL)
             end
 
-            it "SHOULD not install fish" do
+            xit "SHOULD not install fish" do
                 plugin.plug
                 expect(plugin).not_to have_received(:brew_bundle)
             end
@@ -42,7 +42,7 @@ describe Fish do
                                     "/bin/zsh")
                 end
 
-                it "SHOULD save fish to /etc/shells" do
+                xit "SHOULD save fish to /etc/shells" do
                     plugin.plug
                     expect(plugin).to have_received(:system).with(Fish::SAVE_FISH_TO_ETC)
                 end
@@ -58,7 +58,7 @@ describe Fish do
                                     "/bin/zsh")
                 end
 
-                it "SHOULD not save fish to /etc/shells" do
+                xit "SHOULD not save fish to /etc/shells" do
                     plugin.plug
                     expect(plugin).not_to have_received(:system)
                 end
