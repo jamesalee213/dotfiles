@@ -1,0 +1,13 @@
+# This is brewfile for emacs
+
+#required dependencies
+brew "git"
+brew "ripgrep"
+
+# optional dependencies
+brew "coreutils"
+brew "fd"
+
+# emacs
+tap "d12frosted/emacs-plus"
+brew "emacs-plus"
