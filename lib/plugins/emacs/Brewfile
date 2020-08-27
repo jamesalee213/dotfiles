@@ -7,6 +7,9 @@ brew "ripgrep"
 # optional dependencies
 brew "coreutils"
 brew "fd"
+brew "cmake"
+brew "libtool"
+brew "the_silver_searcher"
 
 # emacs
 tap "d12frosted/emacs-plus"
