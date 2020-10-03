@@ -35,7 +35,7 @@ class Emacs
         # Add a check for emacs?
         # move and rename to appropriate place: ~/.emacs.d/lsp-servers/kotlin
         # add the executable to PATH
-        AddPath.new("$HOME/.emacs.d/lsp-servers/kotlin/bin").do
+        # AddPath.new("$HOME/.emacs.d/lsp-servers/kotlin/bin").do
     end
 
     def unplug
