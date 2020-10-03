@@ -4,6 +4,8 @@ class SaveFishInEtc
 
     include FishUtil
 
+    # maybe we can just use tee for saving
+    # echo /usr/local/bin/fish | sudo tee -a /etc/shells
     COMMAND = "sudo sed -i -e '$ a\\\n #{FISH_SHELL.gsub('/', '\/')}\n' #{ETC_SHELLS}"
     UNDO_COMMAND = "sudo sed -i -e '/#{FISH_SHELL.gsub('/', '\/')}/d' #{ETC_SHELLS}"
 

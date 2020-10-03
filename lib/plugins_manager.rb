@@ -16,8 +16,8 @@ $plugins = [
 
 #puts "no plugins installing right now..."
 
-plugin = Fish.new
-#plugin = Emacs.new
+#plugin = Fish.new
+plugin = Emacs.new
 #plugin = Python.new
 plugin.plug
 #plugin.unplug
