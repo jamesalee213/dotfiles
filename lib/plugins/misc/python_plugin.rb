@@ -9,6 +9,6 @@ class Python
     end
 
     def unplug
-        system "brew install python"
+        system "brew uninstall python"
     end
 end
