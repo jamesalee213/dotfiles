@@ -1,0 +1,8 @@
+Except Generated Files
+!file:build//*&&!file:app//build//*&&!lib:*..*
+
+Except Generated Production
+!file:build//*&&!file:app//build//*&&!lib:*..*&&!test:*..*
+
+Except Generated Tests
+!file:build//*&&!file:app//build//*&&!lib:*..*&&!test:*..*
