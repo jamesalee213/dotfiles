@@ -21,6 +21,7 @@ map <silent> gsk <leader><leader>k
 
 " IDE Actions
 noremap <leader>r :action Run<cr>
+noremap <leader>b :action ToggleBookmark<cr>
 noremap <leader>s :action Android.SyncProject<cr>
 noremap <leader>a :action Annotate<cr>
 noremap <leader>f :action ReformatCode<cr>

@@ -34,6 +34,7 @@ let mapleader = " "
 noremap <leader><return> o<esc>
 noremap <leader>p o<esc>p
 noremap <leader>b :buffers<cr>
+noremap <leader>m :marks<cr>
 noremap <leader>r :!!<cr>
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
