@@ -26,9 +26,11 @@ noremap <leader>s :action Android.SyncProject<cr>
 noremap <leader>a :action Annotate<cr>
 noremap <leader>f :action ReformatCode<cr>
 noremap <leader>t :action ActivateTODOToolWindow<cr>
+noremap <leader>p :action PinActiveTab<cr>
 noremap gc :action CommentByLineComment<cr>
 
 
 noremap <c-m-o> :action OverrideMethods<cr>
 noremap <c-w>s :action SplitHorizontally<cr>
 noremap <c-w>v :action SplitVertically<cr>
+
